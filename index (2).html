@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Pixelify+Sans:wght@400..700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=MedievalSharp&family=Pixelify+Sans:wght@400..700&family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  
+  <title>Generador de nombres</title>
+  <style>
+  footer{
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: #c4a484;
+  }
+    h1{
+      font-family:'UnifrakturCook';
+      color: #362417;
+      background-color:#F1DABF;
+      border-radius: 7px 7px 7px;
+      text-align: center;
+    }
+    #resultado{
+      text-align: center;
+      font-size: 25px;
+      font-family:'MedievalSharp';
+      background-color: ;
+    }
+    body{
+      color:#F1DABF ;
+      background-color: #362417;
+    }
+    .contenedor{
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+    #boton1{
+      width: 200px;
+      padding:15px;
+      background-color: #24201b;
+      color: #e5bd72;
+      border: none;
+      font-family:'MedievalSharp';
+      font-size: 20px;
+      cursor: pointer;
+      
+      clip-path: polygon(
+        10% 0,
+        90% 0,
+        100% 25%,
+        95%  50%,
+        100% 75%,
+        90% 100%,
+        0   75%,
+        5%  50%,
+        0   25%
+      );
+      transition: 0.3s;
+    }
+    #boton1:hover{
+    background: linear-gradient(
+      180deg
+      #725126,
+      #382414
+    ); 
+    color: #ffffff;
+    }
+    
+  </style>
+</head>
+<body>
+<h1>Nombres aleatorios de fantasía para oc</h1>
+<p id="resultado">Pulsa el botón para obtener el nombre aleatorio</p>
+<div class="contenedor">
+<button id='boton1'>Nombre aleatorio</button>
+</div>
+<script>
+  let boton=document.getElementById('boton1');
+  let resultado=document.getElementById('resultado');
+  let nombres = [
+    "Aeryn", "Vaelis", "Nymor", "Kaelis", "Zevran",
+    "Elaris", "Thalen", "Nyxen", "Auren", "Velkan",
+    "Lioren", "Zareth", "Maelis", "Riven", "Sylvar",
+    "Avenor", "Kairis", "Neral", "Veylan", "Orien",
+    "Zephir", "Eryndor", "Tavren", "Ilyr", "Vaeron",
+    "Noxiel", "Azelin", "Rhaelis", "Elvarn", "Soryn",
+    "Kaevor", "Ylven", "Draeven", "Orynth", "Velaris",
+    "Nyther", "Aelion", "Zoriel", "Luneth", "Theron",
+    "Virel", "Eryxen", "Saevin", "Myrion", "Keldris",
+    "Avaris", "Zephren", "Nyralis", "Vaelisth", "Rovian",
+    "Eldryn", "Xaviel", "Sylren", "Ovelis", "Thaeryn",
+    "Zyrel", "Aenor", "Valken", "Itharis", "Naeven",
+    "Corvyn", "Elarion", "Rhyven", "Maevor", "Zelith",
+    "Aethren", "Nyvaris", "Kaelor", "Veyris", "Orveth",
+    "Lazren", "Eryalis", "Thyven", "Sairon", "Velith",
+    "Aurenyx", "Zeviel", "Moryn", "Khaelis", "Yvaren",
+    "Nivaris", "Raevyn", "Oryndel", "Zhaeren", "Elyndris",
+    "Vaerith", "Sylven", "Deyran", "Aelvar", "Nyriel",
+    "Korveth", "Iveris", "Zoryn", "Thaelis", "Vanyr",
+    "Eryndis", "Maevryn", "Xylar", "Averith", "Nythiel",
+
+    "Alderyn", "Vireth", "Kaevyn", "Zynaris", "Orelith",
+    "Mavren", "Thalior", "Eryven", "Nymaris", "Vaelorn",
+    "Sylthar", "Keryn", "Avariel", "Draelis", "Zevryn",
+    "Orlian", "Nyvar", "Faelith", "Raviel", "Teryn",
+    "Aelvorn", "Myrelis", "Zarven", "Valthir", "Ilyven",
+    "Khaeron", "Elnaris", "Soryel", "Veyrith", "Aethor",
+    "Neravin", "Dovaris", "Lyrien", "Zelvar", "Kaerith",
+    "Thylar", "Oryniel", "Maerith", "Velorin", "Xeryn",
+    "Avaron", "Nytheris", "Seylor", "Erythil", "Varnis",
+    "Zorven", "Aelaris", "Kyrion", "Nymeth", "Rhaevor",
+    "Ithrel", "Vaenor", "Sylvaris", "Deryth", "Kaeviel",
+    "Lunaris", "Zyther", "Orvian", "Myravel", "Theryn",
+    "Elarven", "Noxaris", "Veylor", "Aethiel", "Ryneth",
+    "Zalorin", "Khaevin", "Ilyrion", "Syravel", "Ovelian",
+    "Vaerion", "Draevyn", "Nerith", "Xavren", "Aelthir",
+    "Moryel", "Zylaris", "Tavriel", "Keryth", "Erylor",
+    "Vanyth", "Rhaelin", "Avarith", "Nyrelor", "Zevanis",
+    "Sylorien", "Kaevris", "Thalven", "Oryelis", "Maevian",
+    "Nythorin", "Virelyn", "Zhaelor", "Eryndel", "Liorith",
+
+    "Aethyra", "Velnyx", "Kairen", "Zoryel", "Thavrin",
+    "Elyvar", "Nerion", "Vaelith", "Syrion", "Draelor",
+    "Mythrel", "Kaevorn", "Orynvar", "Zelion", "Avarneth",
+    "Rhylar", "Nymriel", "Veynar", "Elaroth", "Therylis",
+    "Zavren", "Ilythar", "Mavriel", "Khaelor", "Neravel",
+    "Aelnyr", "Voryn", "Zeryth", "Tavelyn", "Orlaeth",
+    "Sylvren", "Maerion", "Nyvalis", "Darethyn", "Vaeryn",
+    "Xyveris", "Aelrion", "Koralis", "Zevrith", "Lunovar",
+    "Eryvorn", "Thaleryn", "Noxiren", "Myrthiel", "Kaelvyn",
+    "Virethyn", "Oryndis", "Zhaevor", "Selyr", "Averyn",
+    "Draethis", "Nymeron", "Vaelren", "Kyralis", "Elythar",
+    "Zoralis", "Mavoryn", "Aethvar", "Thyrelis", "Nerovyn",
+    "Iverath", "Sylkaen", "Rhaevyn", "Olyndor", "Zyveran",
+    "Khaerith", "Vanylor", "Aelveth", "Nyraven", "Erythran",
+    "Vaerelis", "Dorynth", "Zelthar", "Myraevin", "Thalvyr",
+    "Xyrelith", "Kaenoris", "Ovarien", "Nythavel", "Sorynth",
+    "Elarvyn", "Zhaerith", "Veyrion", "Morythas", "Aevorin",
+    "Nytheran", "Sylvaer", "Korynth", "Draelith", "Vaenith",
+    "Ilyvarn", "Zorveth", "Maelvyn", "Therynor", "Aelzarin",
+
+    "Raveth", "Nymvar", "Kaelorin", "Erythiel", "Zevorin",
+    "Velthyn", "Avarieln", "Ornyth", "Khaevor", "Lyraveth",
+    "Seyvarin", "Thalorin", "Nyxaris", "Vaelvorn", "Zerynd",
+    "Aethorin", "Myrveth", "Kaelthir", "Oryvane", "Zynther",
+    "Elarveth", "Nerithyn", "Sylvaron", "Draevoris", "Aelvyr",
+    "Veythar", "Zhaenor", "Kyraveth", "Nymelith", "Orvanyr",
+    "Theryvane", "Maelorith", "Zevathyn", "Ilyraven", "Vaerovar",
+    "Aethrion", "Noxaviel", "Khaeryn", "Syltheris", "Eryvalon",
+    "Zorathiel", "Mavethryn", "Kaeloryn", "Nyvariel", "Draelvorn",
+    "Aelthorin", "Veylareth", "Zymerion", "Thalveth", "Ornyriel",
+    "Maevorith", "Khaelyr", "Soryvane", "Elarionth", "Zhaevryn",
+    "Nythariel", "Vaeloryn", "Averionth", "Rhaevorin"
+];
+function genNomb(){
+  let numero=Math.floor(Math.random()*nombres.length);
+  resultado.textContent=nombres[numero];
+}
+boton.addEventListener('click', genNomb);
+</script>
+<footer>
+  <p class='copy'>&copy; 2026 EliArt.FantasyName</p>
+</footer>
+</body>
+  
+
+
+</html>
